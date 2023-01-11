@@ -4,8 +4,10 @@ const db = require("./utils/database");
 const initModels = require('./models/init.model');
 const Users = require('./models/users.model');
 const Todos = require('./models/todos.model');
-const userRoutes = require('./routes/users.routes')
 
+
+const userRoutes = require('./routes/users.routes')
+const todosRoutes = require('./routes/todos.routes');
 //crear una instancia de express:
 const app = express();
 
@@ -29,6 +31,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', userRoutes); //para escuchar cualquier routes
+app.use('/api/v1', todosRoutes);
 
 //definir las rutas de nuestros endpoints (ep)
 // todas las consultas de usuarios

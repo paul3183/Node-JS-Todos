@@ -1,9 +1,9 @@
 const UserServices = require('../services/user.services');
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => { //lo que hace la funcion
   try {
-    const result = await UserServices.getAll();
-    res.status(200).json(result);
+    const result = await UserServices.getAll(); //le pide a la bd por medio de sequelize
+    res.status(200).json(result); // lo recibe con res.status 
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -19,6 +19,14 @@ const getUserById = async (req, res) => {
   }
 };
 
+const getUserWithTasks = async (req, res) => {
+  try {
+    FALTA
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+}
+
 const createUser = async (req, res) => {
   try {
     const newUser = req.body;
@@ -28,12 +36,28 @@ const createUser = async (req, res) => {
     res.status(400).json(error.message);
   }
 }
-const updateUser = (req, res) => {
-  res.json({ message: 'Actualizando usuario' });
+
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const field = req.body;
+    const result = await UserServices.update(field, id);
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await UserServices.delete(id);
+    res.status(200).json(result)
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
 }
-const deleteUser = (req, res) => {
-  res.json({ message: 'Eliminando un usuario' });
-}
+
 
 module.exports = {
   getAllUsers,
