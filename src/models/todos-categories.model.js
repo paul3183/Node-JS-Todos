@@ -9,6 +9,7 @@ const TodosCategories = db.define("todos_categories", {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     allowNull: false,
+    unique: true,
   },
   todoId: {
     type: DataTypes.INTEGER,

@@ -1,4 +1,5 @@
 const TodosServices = require('../services/todos.services');
+
 const getAllTodos = async (req, res) => {
   try {
     const result = await TodosServices.getAll();
@@ -41,7 +42,23 @@ const deleteTodos = async (req, res) => {
     const result = await TodosServices.deleteTodos(id);
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).json(error.message)
+    res.status(400).json(error.message);
+  }
+}
+
+const getTodosWithCategories = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await TodosServices.getWithCategories(id);
+    res.json({
+      message: "Enviando tareas con categorias",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      error: error.messages,
+      details: error.stack,
+    });
   }
 }
 
@@ -51,4 +68,5 @@ module.exports = {
   createTodos,
   updateTodos,
   deleteTodos,
+  getTodosWithCategories,
 }

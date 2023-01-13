@@ -19,9 +19,21 @@ const getUserById = async (req, res) => {
   }
 };
 
-const getUserWithTasks = async (req, res) => {
+const getUserWithTodos = async (req, res) => {
   try {
-    FALTA
+    const { id } = req.params;
+    const result = await UserServices.getUserWithTodos(id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+}
+
+const getUserWithCategories = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await UserServices.getUserWithCategories(id);
+    res.json(result);
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -59,10 +71,13 @@ const deleteUser = async (req, res) => {
 }
 
 
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUserWithTodos,
+  getUserWithCategories,
 }

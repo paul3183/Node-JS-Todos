@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/users.controller');
+const { getAllUsers, getUserById, createUser, updateUser, deleteUser, getUserWithTodos, getUserWithCategories } = require('../controllers/users.controller');
 
 const router = Router();
 
@@ -33,6 +33,11 @@ router.delete('/users/:id', deleteUser);
 // (req, res) => {
 //   res.json({ message: 'Eliminando un usuario' });
 // }
+
+router.get('/users/:id/todos', getUserWithTodos);
+
+//creando la ruta para traer los ususarios:
+router.get('/users/:id/categories', getUserWithCategories);
 
 module.exports = router;
 // export default router;
