@@ -4,7 +4,11 @@ const db = require("./utils/database");
 const initModels = require('./models/init.model');
 const Users = require('./models/users.model');
 const Todos = require('./models/todos.model');
+const cors = require('cors');
+const authRoutes = require('./routes/auth.routes');
+require('dotenv').config();
 
+console.log(process.env.PORT);
 
 const userRoutes = require('./routes/users.routes')
 const todosRoutes = require('./routes/todos.routes');
@@ -12,6 +16,7 @@ const todosRoutes = require('./routes/todos.routes');
 const app = express();
 
 app.use(express.json()) //MEFALTA
+app.use(cors());
 
 const PORT = 8000;
 
@@ -32,6 +37,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1', userRoutes); //para escuchar cualquier routes
 app.use('/api/v1', todosRoutes);
+
+app.use('/api/v1', authRoutes);
 
 //definir las rutas de nuestros endpoints (ep)
 // todas las consultas de usuarios

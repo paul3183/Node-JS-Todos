@@ -12,6 +12,7 @@ class UserServices {
       throw error;
     }
   }
+
   static async getById(id) {
     try {
       const result = await Users.findByPk(id);
@@ -60,6 +61,7 @@ class UserServices {
       throw error;
     }
   }
+
   static async update(field, id) {
     try {
       const result = await Users.update(field, {
@@ -70,6 +72,7 @@ class UserServices {
       throw error;
     }
   }
+
   static async delete(id) {
     try {
       const result = await Users.destroy({

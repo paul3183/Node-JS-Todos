@@ -13,12 +13,27 @@ const users = [
 ];
 
 const todos = [
-  { title: 'Estudiar Node', description: 'shalashalal', userId: 1 },
+  {
+    title: 'Estudiar Node',
+    description: 'shalashalal',
+    userId: 1
+  },
 
-  { title: 'Pasear al perro', description: 'shalashalal 2', userId: 1 },
+  {
+    title: 'Pasear al perro',
+    description: 'shalashalal 2',
+    userId: 1
+  },
 
-  { title: 'lavar platos', userId: 2 },
-  { title: 'ir al chequeo mensual', description: 'porque node no me deja', userId: 3 },
+  {
+    title: 'lavar platos',
+    userId: 2
+  },
+  {
+    title: 'ir al chequeo mensual',
+    description: 'porque node no me deja',
+    userId: 3
+  },
 ];
 
 const categories = [
