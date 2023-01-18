@@ -1,4 +1,4 @@
-const { Sequelize } = require('Sequelize'); // ORM es  
+const { Sequelize } = require('sequelize'); // ORM es  
 // crear una instancia con parametros de config. de nuestra base de datos:
 // un objeto de configuracion  --> credenciales de mi base de datos
 require('dotenv').config(); //vamos autilizar variables de entorno
@@ -12,6 +12,7 @@ const db = new Sequelize({
   password: process.env.DB_PASSWORD, //"041213",
   dialect: "postgres", // la base de datos que estamos usando
   logging: false,  //para silenciar el sequilize
+  // dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }
 });
 
 module.exports = db;

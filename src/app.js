@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json()) //MEFALTA
 app.use(cors());
 
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 //probando la conexion ala base de datos
 db.authenticate()
